@@ -17,15 +17,13 @@
         .countdown-container {
             background-color: #D1C9BD;
             padding: 30px;
-            border: 3px solid #6F1A1A;
+            border: 1px solid #9C816E;
             display: inline-block;
             position: relative;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         }
         h1 {
             color: #6F1A1A;
             font-size: 32px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             margin: 0;
         }
         input, button {
@@ -33,7 +31,7 @@
             font-size: 20px;
             padding: 8px;
             margin: 8px;
-            border: 2px solid #6F1A1A;
+            border: 2px solid #9C816E;
             background-color: #F3EEEE;
             color: #6F1A1A;
             cursor: pointer;
@@ -92,11 +90,11 @@
                 const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
                 if (daysLeft > 0) {
-                    document.getElementById("countdown").innerHTML = `♥<br>Days left: ${daysLeft}`;
+                    document.getElementById("countdown").innerHTML = `♥ Days left: ${daysLeft} ♥`;
                 } else if (daysLeft === 0) {
-                    document.getElementById("countdown").innerHTML = "♥<br>Today is the day!";
+                    document.getElementById("countdown").innerHTML = "♥ Today is the day! ♥";
                 } else {
-                    document.getElementById("countdown").innerHTML = "♥<br>The date has passed.";
+                    document.getElementById("countdown").innerHTML = "♥ The date has passed. ♥";
                 }
             }
 
