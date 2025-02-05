@@ -8,39 +8,76 @@
     <style>
         body {
             font-family: 'UnifrakturMaguntia', cursive;
-            background-color: ##9c816e;
+            background-color: #d1c9bd;
             text-align: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
         .countdown-container {
-            background-color: #d1c9bd;
-            padding: 20px;
-            border-radius: 10px;
+            background-color: #9c816e;
+            padding: 30px;
+            border-radius: 15px;
             display: inline-block;
+            position: relative;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         }
         h1 {
             color: #6F1A1A;
-            font-size: 28px;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         input, button {
             font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 18px;
-            padding: 5px;
-            margin: 5px;
+            font-size: 20px;
+            padding: 8px;
+            margin: 8px;
             border: 2px solid #6F1A1A;
             background-color: #d1c9bd;
             color: #6F1A1A;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #6F1A1A;
+            color: #d1c9bd;
         }
         #countdown {
             color: #6F1A1A;
+            font-size: 26px;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: #6F1A1A;
             font-size: 24px;
-            margin-top: 10px;
+            animation: floatHearts 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="countdown-container">
-        <h1>Event Countdown</h1>
+        <h1>♥ Event Countdown ♥</h1>
         <input type="date" id="eventDate">
         <button onclick="startCountdown()">Set Date</button>
         <p id="countdown">Enter a date to start</p>
@@ -60,17 +97,32 @@
                 const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
                 if (daysLeft > 0) {
-                    document.getElementById("countdown").innerText = `Days left: ${daysLeft}`;
+                    document.getElementById("countdown").innerText = `♥ Days left: ${daysLeft} ♥`;
                 } else if (daysLeft === 0) {
-                    document.getElementById("countdown").innerText = "Today is the day!";
+                    document.getElementById("countdown").innerText = "♥ Today is the event! ♥";
                 } else {
-                    document.getElementById("countdown").innerText = "The event has passed.";
+                    document.getElementById("countdown").innerText = "♥ The event has passed. ♥";
                 }
             }
 
             updateCountdown();
             setInterval(updateCountdown, 1000 * 60 * 60); // Update every hour
         }
+
+        // Floating Hearts Effect
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "♥";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 800);
     </script>
 </body>
 </html>
